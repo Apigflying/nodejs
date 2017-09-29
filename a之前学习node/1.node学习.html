@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		1.
+		在默认情况下，Node准备了exports变量和module.exports变量，实际上是同一个变量
+		并且初始化为空对象{}
+		换句话说：
+			Node默认准备了一个空对象{},可以往里面放东西，但是
+			如果要输出一个函数或者数组，那么只能给module.exports来赋值
+			即：
+				module.exports=function(){};
+				只暴露一个函数的情况下
+			而给exports赋值是无效的，因为赋值之后，module.exports依旧是空对象
+
+		如果要往外暴露东西，可以用exports.对象=对象、函数等
+		相当于：
+			exports={
+				名字：对象，
+				名字：函数
+			}
+
+		2.
+		nodejs是运行在服务区端的js环境，服务器程序和浏览器程序相比，最大的特点是没有浏览器的安全限值了，而且，服务器程序必须能接受网络请求，读写文件，处理二进制内容，所以，node内置的重用模块就是为了实现基本的服务器功能，这些模块在浏览器环境中是无法被执行的
+
+		1) global
+		在浏览器端的js中，仅有一个全局对象即：window对象，而在node环境中，也有唯一的全局对象：global，这个对象的属性和方法也在浏览器环境的window不同
+
+		 global.console
+			Console {
+			log: [Function: bound ],
+			info: [Function: bound ],
+			warn: [Function: bound ],
+			error: [Function: bound ],
+			dir: [Function: bound ],
+			time: [Function: bound ],
+			timeEnd: [Function: bound ],
+			trace: [Function: bound trace],
+			assert: [Function: bound ],
+			Console: [Function: Console] }
+
+		2)process
+			process也是node提供的一个对象，他代表当前node的进程，通过process对象可以拿到许多的有用信息
+
+			JavaScript程序是由事件驱动执行的单线程模型，node也不例外
+			node不断执行响应事件的js函数，直到没有任何响应的事件的函数可以执行，node就退出了
+			如果想要在下一次事件响应中执行代码，可以调用
+			：
+			process.nextTick();
+
+			在一个text.js文件中：
+
+			process.nextTick(()=>{
+				console.log('nextTick was onset')
+			})不会立刻执行，而是要等到下一次事件循环
+			即：
+				下面这行代码打印完，text.js文件执行完毕后，
+				再执行上面的程序
+			console.log('text.js')
+			'text.js' -> 先输出
+			''nextTick was onset' -> 后输出
+
+			nodejs进程本身的事件由process对象来处理，如果响应：'exit'事件，就可以在程序即将退出时执行某个回调函数：
+			porcess.on('exit',function(code){
+				console.log(code)
+			})
+			
+			js代码既能在浏览器端执行，也能在node端执行，有时就需要判断，程序本身是在什么环境下运行的：
+			if(typeof window==='undefined'){
+				console.log('nodejs')
+			}else{
+				console.log('浏览器端')
+			}
+
+	</body>
+</html>

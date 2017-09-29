@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<style>
+
+		
+	</style>
+	<!-- <link rel="stylesheet" href=""> -->
+</head>
+<body>
+	stat:
+	如果想要获取文件大小、创建时间等信息可以是用fs下的stat方法，它返回一个stat对象，能告诉我们文件或者目录的详细信息
+	<script>
+		var fs=require('fs');
+		fs.stat('1.js',function(err,stat){
+			if(err){
+				console.log(err);
+			}else{
+				//判断是否是文件，返回布尔值，这里能够找到，就返回true
+				console.log('isFile: '+stat.isFile());
+				//判断是不是目录，返回布尔值，这里不是文件夹，所以返回fasle
+				console.log('isDirectory: '+stat.isDirectory());
+				if(stat.isFile()){
+					//如果是文件，走这里
+					//判断文件的大小1.js文件的大小
+					console.log('size: '+stat.size);
+					//birthtime保存了1.js文件创建的时间，是时间对象
+					console.log('birth time: '+stat.birthtime);
+					//修改时间1.js文件的时间
+					console.log('modified time: '+stat.mtime);
+				}
+			}
+		})
+	</script>
+
+	异步还是同步：
+	在fs模块中，提供的方法都有异步和同步，什么时候使用异步方法，什么时候使用同步方法：
+	
+	由于Node环境执行的JavaScript代码是服务器端代码，所以，绝大部分需要在服务器运行期反复执行业务逻辑的代码，必须使用异步代码，否则，同步代码在执行时期，服务器将停止响应，因为JavaScript只有一个执行线程。
+
+	服务器启动时如果需要读取配置文件，或者结束时需要写入到状态文件时，可以使用同步代码，因为这些代码只在启动和结束时执行一次，不影响服务器正常运行时的异步执行。
+
+
+</body>
+</html>
