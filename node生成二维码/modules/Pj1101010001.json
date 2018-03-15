@@ -1,0 +1,229 @@
+{
+    "result": "success",
+    "res": [
+        {
+            "objectName": "O-R001",
+            "objectId": "Sp1101010001001001001",
+            "md5": "B18117DF2117336794EE58109D6F978B",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R002",
+            "objectId": "Sp1101010001001001002",
+            "md5": "DBD217B3EAF5A014159B7C9B2404BCAE",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R003",
+            "objectId": "Sp1101010001001001003",
+            "md5": "EEB41E94020A7B9A6A4FE11EBF038A59",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R00M",
+            "objectId": "Sp1101010001001001004",
+            "md5": "D5B3BECE2F894E52437E77BF69A11FF4",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R00M-M",
+            "objectId": "Sp1101010001001001005",
+            "md5": "0D363CE8F39C7345C18C6ED75D6FDC7E",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R005",
+            "objectId": "Sp1101010001001001006",
+            "md5": "90C1477E5AD1F7B46BED746A333B84AC",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R006",
+            "objectId": "Sp1101010001001001007",
+            "md5": "EF0C50A45683EA7BF8869F13B73DB70D",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R007",
+            "objectId": "Sp1101010001001001008",
+            "md5": "2E2E12554DC5D0A218D6C1A579641EFE",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R008",
+            "objectId": "Sp1101010001001001009",
+            "md5": "9248DBBC075DD1EAE03ED630ADACC539",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R008-M",
+            "objectId": "Sp1101010001001001010",
+            "md5": "5E6FE1AF42CF6C1D6CD5752D57014325",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R009",
+            "objectId": "Sp1101010001001001011",
+            "md5": "5BADA61C1D40FA94B04EAD74A2620916",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R010",
+            "objectId": "Sp1101010001001001012",
+            "md5": "9C6211750D13162BDE8DED99BAEF98DD",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R011",
+            "objectId": "Sp1101010001001001013",
+            "md5": "D058AC69C9058E49C45E31CDEF39522A",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R012",
+            "objectId": "Sp1101010001001001014",
+            "md5": "87B3D038ADE135D58CE58CE496659F46",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R013",
+            "objectId": "Sp1101010001001001015",
+            "md5": "0100931CB1539D6D20CDDC351859784A",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R01M",
+            "objectId": "Sp1101010001001001016",
+            "md5": "2C616F076DD8EB5064104ED614E91CB0",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R015",
+            "objectId": "Sp1101010001001001017",
+            "md5": "15ABBDBA26BF4AC9E7A3C6E51802D514",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R016",
+            "objectId": "Sp1101010001001001018",
+            "md5": "F2F62D77ED4E6BDEA2DC7B303E15CAD7",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R017",
+            "objectId": "Sp1101010001001001019",
+            "md5": "F1FF53C95CE96C43E71AC4E2060CCCAE",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "O-R018",
+            "objectId": "Sp1101010001001001020",
+            "md5": "06970905A751F5331754380CEEFFA810",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "F-R005",
+            "objectId": "Sp1101010001001001021",
+            "md5": "667DF8F0F9A4A86128733B0ECA06CDF1",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "F-R001",
+            "objectId": "Sp1101010001001001022",
+            "md5": "623B5F16C3FF1520F7C72D2DC1927701",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "F-R002",
+            "objectId": "Sp1101010001001001023",
+            "md5": "E42773ACEE53F189CEDBF107965D7292",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "活动区",
+            "objectId": "Sp1101010001001001024",
+            "md5": "A3D0EC0A785096D0C91C3A1D98001511",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "M-R001",
+            "objectId": "Sp1101010001001001025",
+            "md5": "82B0F387AF90C0E47B6E285A007018E3",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "走廊",
+            "objectId": "Sp1101010001001001026",
+            "md5": "42D1371F4172162C67C465290A190784",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "F-R003",
+            "objectId": "Sp1101010001001001027",
+            "md5": "5F99556B996474AEE7102B46494901E6",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        },
+        {
+            "objectName": "F-R00M",
+            "objectId": "Sp1101010001001001028",
+            "md5": "3EB4F1472643BA699C69F076B72C7526",
+            "projectId": "Pj1101010001",
+            "type": "space",
+            "projectName": "北京中海地产广场"
+        }
+    ]
+}

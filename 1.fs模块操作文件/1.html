@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //    Promise.all()接收一个数组，数组的每一项都是Promise函数
+        var a = (time) => {
+            return new Promise((resolve, reject) => {
+                setTimeout(function() {
+                    resolve(Date.now())
+                }, time);
+            })
+        }
+        var b = (arr) => {
+            Promise.all(arr.map(item => {
+                return a(item)
+            })).then(res => {
+                console.log(res)
+            })
+        }
+        b([4000, 3000, 2000, 4000])
+    </script>
+</body>
+
+</html>

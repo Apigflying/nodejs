@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="./js/jquery.js"></script>
+		<script src="./js/socket.io.js"></script>
+	</head>
+
+	<body>
+		<input type="text" id="texts" />
+		<input type="button" id="sendTxt" value="发送数据" />
+		<input type="button" id="connect" value="建立连接" />
+		<input type="button" id="unconnect" value="断开连接" />
+		<div id="messages"></div>
+		<script>
+			var isUnConnect = true;
+			var socket;
+			$("#connect").on('click', e => {
+				if(isUnConnect) {
+					//建立连接
+					socket = io.connect('ws://localhost:5004');
+					//更改状态
+					isUnConnect = false
+					//监听事件
+					socket.on('chat messagea', function(msg) {
+						$('#messages').append($('<li>').text(msg));
+					});
+					console.log('连接成功')
+				} else {
+					console.log('已经建立连接了')
+				}
+			});
+			
+			$("#unconnect").on("click", e => {
+				if(socket) {
+					isUnConnect = true;
+					//客户端主动触发浏览器端的取消连接事件
+					socket.disconnect();
+					socket = undefined;
+				} else {
+					console.log('还没有建立连接')
+				}
+			})
+
+			$('#sendTxt').on('click', e => {
+				if(socket) {
+					socket.emit('chat messagea', $('#texts').val().trim() || '发送了空字符串');
+				} else {
+					console.log('还没有建立连接')
+				}
+			})
+		</script>
+	</body>
+
+</html>

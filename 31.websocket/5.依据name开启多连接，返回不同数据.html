@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="./js/socket.io.js" type="text/javascript">
+		</script>
+	</head>
+
+	<body>
+		<script>
+			var socket = io('http://localhost:5005'); // TIP: io() with no args does auto-discovery
+			socket.on('connect', function() { // TIP: you can avoid listening on `connect` and listen on events directly too!
+				socket.emit('ferret', 'tobi', function(data) {
+					console.log(data); // data will be 'woot'
+				});
+				socket.emit('ferret', 'ab', function(data) {
+					console.log(data); // data will be 'woot'
+				});
+			});
+		</script>
+	</body>
+
+</html>
