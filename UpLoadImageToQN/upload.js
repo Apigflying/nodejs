@@ -18,6 +18,7 @@ app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
+console.log(123);
 app.get('/',(req,res)=>{
   res.send('链接成功')
 })
