@@ -1,0 +1,8 @@
+{
+  "name": "",
+  "version": "",
+  "dependencies": {
+    "express": "^4.15.4",
+    "qiniu": "^7.0.8"
+  }
+}
