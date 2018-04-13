@@ -1,0 +1,3 @@
+无法登陆gitlab需要使用gitlab配置C:\Users\Administrator\.ssh目录下的ssh加密文件
+测试后使用ssh -T git@gitlab.com
+Hi Apigflying! You've successfully authenticated, but GitHub does not provide shell access.
