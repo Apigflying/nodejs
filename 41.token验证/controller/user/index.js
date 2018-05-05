@@ -33,7 +33,7 @@ class UserCtrl {
             message:'密码错误'
           })
         }
-        const token = this.getToken({
+        const token =await this.getToken({
           username:userMes.username,
           password:userMes.password
         });
@@ -53,9 +53,8 @@ class UserCtrl {
 
   }
   async getToken () { // 通过用户名密码 换取 token
-    console.log(createToken);
-    
-    let token =await createToken({...arguments});
+    let token =await createToken(...arguments);
+    console.log(token);
     return token
   }
   async signup (req, res) {

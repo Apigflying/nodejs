@@ -1,0 +1,29 @@
+{
+  "name": "mypackagejson",
+  "version": "1.0.0",
+  "description": "my package.json file",
+  "dependencies": {
+    "@tweenjs/tween.js": "^17.1.1",
+    "cookie-parser": "^1.4.3",
+    "es6-promisify": "^5.0.0",
+    "express": "^4.16.3",
+    "express-session": "^1.15.5",
+    "formidable": "^1.2.1",
+    "jsonwebtoken": "^8.2.1",
+    "mongodb": "^2.2.31",
+    "mongoose": "^4.13.12",
+    "nodejs-websocket": "^1.7.1",
+    "request": "^2.83.0",
+    "socket.io": "^2.0.4",
+    "supervisor": "^0.12.0",
+    "time-formater": "^1.0.1",
+    "uuid": "^3.1.0",
+    "ws": "^3.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "cxy",
+  "license": "ISC"
+}

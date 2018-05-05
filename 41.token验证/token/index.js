@@ -8,7 +8,7 @@ module.exports = function createToke (payload, options) {
       if (err) {
         reject(err)
       }
-      console.log(data.toString());
+      console.log(payload);
       
       jwt.sign(payload, data, options, function (err, token) {
         resolve(token);
