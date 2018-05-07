@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const jwt = require('jsonwebtoken');
 
-exports = function createToke (payload, options) {
+exports.createToken = function (payload, options) {
   return new Promise((resolve, reject) => {
     fs.readFile(path.dirname(__filename)+'/secret.key', function (err, data) {
       if (err) {
@@ -17,6 +17,6 @@ exports = function createToke (payload, options) {
   })
 };
 
-exports = function verifyToken(){
+exports.verifyToken = function verifyToken(){
 
 }

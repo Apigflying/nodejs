@@ -357,26 +357,47 @@ C:\Users\Administrator\Desktop\我的笔记\JSNodes\node\3.模块的概念.js
 
 
 
-path模块
+## path模块
+> path模块是node用于整理、转换、合并路径的.用于处理路径字符串，不会处理文件
+
+**注：path模块的进入文件夹的方式与cd相似
+    cd .. 表示当前路径的上一层路径**
+    
+### 1. path、fs与exports的冲突问题
+> 当在一个封装的功能性的函数中使用了fs、path。然后对外暴露这个函数的时候。路径可能会产生问题
+```js
+// createToken.js
+const fs = require('fs');
+const path = require('path');
+
+exports = function createToken(){
+    return new Promise((resolve,reject)=>{
+        fs.readFile('./secret.key',(err,data)=>{
+            resolve(data)
+        })
+    })
+}
+```
+> 引用的文件
+```js
+const {createToken} = require('../../token/creatToken.js');
+// 在引用的时候，就会报路径错误
+```
+在文件引用的时候，会报错
+` Error: ENOENT: no such file or directory, open './secret.key'`
+
+
 ----------
-#### path模块是node用于整理、转换、合并路径的。用于处理路径字符串，不会处理文件
-注：path模块的进入文件夹的方式与cd相似
-    cd .. 表示当前路径的上一层路径
-## path.normalize路径整理 ##
-
-
-> 当在本地的一个网页中
-```javascript
-$.ajax({
-	url:'http://localhost:8000/abc',
-	method:'GET',
-	success:function(data){
-		console.log(data)
-	}
+> 解决如上问题：
+```js
+// createToken.js
+fs.readFile(path.dirname(__filename)+'/secret.key',(err,data)=>{
+    resolve(data)
 })
 ```
-cookie
----
+**`path.dirname(__filename)+'/secret.key'`**  ，用来解决这个问题
+
+## cookie
 > - [ ] 由于http是无状态协议，当浏览一个页面，从这个页面跳转到另一个页面的时候，服务器无法认识到，这是同一台浏览器访问的，因为每次访问这个服务器的资源的时候，每个访问都是没有关系的
  如：
     访问淘宝的页面，从淘宝首页跳转到搜索页面，访问的是同一个服务器上的不同资源，但是服务器需要知道是谁在访问这个页面，从而将结果递交给浏览器客户端

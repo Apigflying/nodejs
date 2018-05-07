@@ -3,7 +3,7 @@ const formidable = require('formidable');// 用于处理post请求的requir
 const dtime = require('time-formater');// 格式化时间的工具
 const crypto = require('crypto');
 const User = require('../../models/user/index.js');
-const {createToken} = require('../../token/index.js');
+const {createToken}  = require('../../token/index.js');
 
 class UserCtrl {
   constructor() {
