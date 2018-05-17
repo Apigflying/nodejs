@@ -435,17 +435,17 @@ http {
     }
 ```
 
-### 实例qnmp代理
+### 实例qnmd代理
 ```
-upstream qnmp{
-    server       127.0.0.1:8380 weight=1;
+upstream qnmd{
+    server       127.0.0.1:8381 weight=1;
 }
 server {
     listen       80;
-    server_name  qnmp.sagacloud.cn;
-    access_log   logs/qnmp.access.log  main;
+    server_name  qnmd.sagacloud.cn;
+    access_log   logs/qnmd.access.log  main;
 
-    root         /apps/qnmp/dist;
+    root         /apps/qnmd/dist;
     index        index.html;
 
     location / {
@@ -457,7 +457,7 @@ server {
     }
 
     location ^~ /weChat/ {
-        proxy_pass              http://qnmp;
+        proxy_pass              http://qnmd;
         proxy_set_header        Host            $host;
         proxy_set_header        X-Real-IP       $remote_addr;
         proxy_set_header        X-Forwarded-For $proxy_add_x_forwarded_for;
@@ -468,7 +468,7 @@ server {
         proxy_send_timeout      30;
         proxy_read_timeout      30;
     }
-
+    // 转发微信的请求
     location = /sns/oauth2/access_token {
         proxy_pass              https://api.weixin.qq.com/sns/oauth2/access_token;
         proxy_set_header        Host            $host;
@@ -481,7 +481,7 @@ server {
         proxy_send_timeout      30;
         proxy_read_timeout      30;
     }
-
+    // 微信提供的接口
     location = /cgi-bin/user/info {
         proxy_pass              https://api.weixin.qq.com/cgi-bin/user/info;
         proxy_set_header        Host            $host;
