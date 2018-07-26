@@ -1,12 +1,12 @@
 let qiniu = require('qiniu'),
   express = require('express'),
   app = express(),
-  accessKey = 'wXU0N-J__BVbIkuXVtrkIypx506EgmgG5XL9QPT3',
-  secretKey = '7WoOsKcuy5ib3gNP5Z2GZ_G-Npgu-0lLM6Rl1K5Q';
+  accessKey = '七牛提供的key',
+  secretKey = '七牛提供的key';
 
 var mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
 var options = {
-  scope: 'cxy-cs',
+  scope: 'bucket空间',
   expires: 7200
 };
 var putPolicy = new qiniu.rs.PutPolicy(options);

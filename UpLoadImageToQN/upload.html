@@ -120,8 +120,8 @@
 			function submits() {
 				submitconfig({
 					getUploadToken: 'http://localhost:3000/upload', //获取uploadToken的后端地址
-					urlArea: 'http://upload-z2.qiniu.com', //上传到七牛云的服务器地址  
-					urlSpace: 'osjykr1v3.bkt.clouddn.com' 
+					urlArea: '七牛云服务器地址', //上传到七牛云的服务器地址  
+					urlSpace: '七牛云服务器空间' 
 				})
 			}
 
@@ -243,6 +243,7 @@
 						xhr.open('POST', url, true);
 						xhr.setRequestHeader('Content-Type', 'application/octet-stream');
 						xhr.setRequestHeader('Authorization', `UpToken ${uploads.uploadToken}`);
+						console.log(uploads.picBase)
 						xhr.send(uploads.picBase);
 					} catch(err) {
 						reject(err);
