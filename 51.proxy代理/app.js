@@ -4,6 +4,9 @@ import configLite from 'config-lite';
 import formidable from 'formidable';
 const config = configLite(__dirname);
 const app = express();
+import os from 'os';
+var localhost = '';
+
 //允许跨域请求
 if (config.alloworigin) {
   app.all('*', (req, res, next) => {
@@ -21,17 +24,28 @@ if (config.alloworigin) {
 }
 
 // router(app)
-var n=0;;
+function getClientIp (req) {
+  return req.headers['x-forwarded-for'] || req.connection.remoteAddress || req.socket.remoteAddress || req.connection.socket.remoteAddress;
+}
 
-app.get('/',(req,res)=>{
-  console.log(req);
-  res.send({});
+app.get('/', (req, res) => {
+
+try{
+  var netWork = os.networkInterfaces();
+  localhost = netWork[Object.keys(netWork)[0]][1].address
+}catch(e){
+  localhost = 'localhost';
+}
+console.log(localhost);
+  res.send({
+    'yourIP':getClientIp(req)
+  });
 })
 
-app.get('/test',(req,res)=>{
+app.get('/test', (req, res) => {
   console.log('接收到请求了');
   res.send({
-    type:'success'
+    type: 'success'
   })
 })
 
