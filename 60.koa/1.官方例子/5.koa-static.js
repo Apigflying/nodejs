@@ -8,7 +8,10 @@ const app = new Koa();
 
 app.use(bodyParser());
 
-
+router.get('/',async (ctx,next)=>{
+  const {request:req,response:res} = ctx;
+  res.body='123'
+})
 
 // 使用koa-static 提供静态服务
 app.use(koaStatic(path.join(__dirname, './dist')));
