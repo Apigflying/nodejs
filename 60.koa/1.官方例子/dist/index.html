@@ -10,8 +10,13 @@
   <script src="./js/main.js"></script>
 </head>
 <body>
-  <p class="acb">
-    123
-  </p>
+  <form action="/test" method="POST">
+    <p>Name: <input name="name" value="koa"></p>
+    <p>Password: <input name="password" type="password"></p>
+    <p><input type="submit" value="Submit"></p>
+  </form>
+  <script>
+    console.log(document.cookie)
+  </script>
 </body>
 </html>
