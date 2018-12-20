@@ -12,7 +12,7 @@ app.use(async (ctx, next) => {
   // koa 设置cookie到前端
   ctx.cookies.set('SessionId', 1234, {
     domain: 'localhost',  // 写cookie所在的域名
-    path: '/',       // 写cookie所在的路径 domain和path一起来限制 cookie 能被哪些 URL 访问。
+    path: '/',// 写cookie所在的路径 domain和path一起来限制 cookie 能被哪些 URL 访问。
     maxAge: 1*60 * 1000, // cookie有效时长 (毫秒) 设置过期时间，在该时间过期之后，前端保存的cookie会自动过期
     // expires: new Date('2018-12-15'),  // cookie失效时间(到过期时间，该条cookie会被自动删除)
     httpOnly: true,  // 是否只用于http请求中获取(设置为true，在前端无法通过document.cookie获取)
