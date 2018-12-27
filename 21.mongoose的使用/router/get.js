@@ -5,8 +5,11 @@ const getInstance = new GetController();
 
 const get = new Router();
 
-get.get('/getUser', getInstance.getUser) // 获取天气信息
+get.get('/getUser', getInstance.getUser)
   // .get('/testget', getInstance.testGet)
-  .get('/getArticle', getInstance.getArticleByTitle) // 获取七牛云图片
+  .get('/getArticleById', getInstance.getArticleById)
+  .get('/getArticleByTitle', getInstance.getArticleByTitle)
+  .get('/getCommentById', getInstance.getCommentById)
+
 
 export default get;
