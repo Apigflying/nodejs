@@ -29,7 +29,7 @@ export default class DAO {
     return articleModel.findById(id).populate({
       path: 'author comments',
       populate: {
-        path: 'commenter'
+        path: 'commenter comments'
       }
     })
   }
@@ -41,7 +41,7 @@ export default class DAO {
     }).populate({
       path: 'author comments',
       populate: {
-        path: 'commenter'
+        path: 'commenter comments'
       }
     });
   }
@@ -74,12 +74,8 @@ export default class DAO {
    */
   async createArticle ({ title, username, content }) {
     const user = await this.findUserByName(username);
-    if (!user) {
-      return this.errornofond('用户没找到!')
-    }
     const article = await articleModel.create({
       title,
-      author: user._id,
       content,
       comments: []
     });
@@ -97,28 +93,34 @@ export default class DAO {
    */
   async createCommentById ({
     articleId, // 文章Id
-    commenterId, // 评论者的 user._id
+    username, // 评论者的 user._id
+    commentId, // 如果有commentId就是对评论进行评论
     commentcontent // 评论内容
   }) {
-    const article = this.findArticleById(articleId);
-    const user = this.findUserById(commenterId);
-    const comment = await commentModel.create({
+    const article = await this.findArticleById(articleId);
+    const user = await this.findUserByName(username);
+    const newcomment = await commentModel.create({
       article: article._id,
       commenter: user._id,
-      content: commentcontent
+      content: commentcontent,
+      comments:[]
     });
-    // 添加到评论列表
-    article.comments.push(comment._id);
-    // 添加到用户个人评论中心
-    user.comments.push(comment._id);
-    // 保存到用户添加的评论
-    const userUpdate = await user.save();
-    // 保存到文章评论
-    const articleUpdate = await article.save();
-    return new Promise((res) => res({
-      user: userUpdate,
-      article: articleUpdate
-    }))
+    // commentId存在，说明添加的是子评论
+    if(!!commentId){
+      console.log(1);
+      const comment = await commentModel.findById(commentId);
+      comment.comments.push(newcomment._id);
+      comment.save();
+    }else{
+      console.log(2);
+      // 非子评论才放到文章评论列表中
+      article.comments.push(newcomment._id);
+      await article.save();
+    }
+    // 评论者的comments添加一条记录
+    user.comments.push(newcomment._id);
+    await user.save();
+    return newcomment;
   }
   async createCommentByName({
     username,

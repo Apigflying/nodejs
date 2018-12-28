@@ -30,16 +30,7 @@ export default class PostReq extends DAO {
   // 创建评论
   async postComment (ctx, next) {
     const { request: req, response: res } = ctx;
-    const { 
-      username, // 文章Id
-      articleId, // 评论者的 user._id
-      commentcontent  
-    } = req.body;
-    const result = await this.createCommentByName({
-      username, // 文章Id
-      articleId, // 评论者的 user._id
-      commentcontent 
-    })
+    const result = await this.createCommentById(req.body)
     res.body = result;
   }
   // 测试函数
