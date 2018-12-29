@@ -29,7 +29,7 @@ export default class DAO {
     return articleModel.findById(id).populate({
       path: 'author comments',
       populate: {
-        path: 'commenter comments'
+        path: 'commenter comments',
       }
     })
   }
