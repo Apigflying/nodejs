@@ -7,9 +7,8 @@ const get = new Router();
 
 get.get('/getUser', getInstance.getUser)
   // .get('/testget', getInstance.testGet)
-  .get('/getArticleById', getInstance.getArticleById)
+  .get('/getArticleListByUser', getInstance.getArticleListByUser)
+  .get('/getArticleDetail', getInstance.getArticleDetail)
   .get('/getArticleByTitle', getInstance.getArticleByTitle)
-  .get('/getCommentById', getInstance.getCommentById)
-
-
+  
 export default get;

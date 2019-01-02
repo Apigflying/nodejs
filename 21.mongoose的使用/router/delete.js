@@ -1,9 +1,10 @@
 import Router from 'koa-router';
 
-import deleteController from '../controllers/delete';
-
+import DeleteController from '../controllers/delete';
+const delInstance = new DeleteController();
 let deletes = new Router();
 
-deletes.del('/deleteArticle', deleteController.deleteArticle)
+deletes.del('/deleteComment', delInstance.deleteComment)
+  .del('/deleteArticleBySummaryId', delInstance.deleteArticleBySummaryId)
 
 export default deletes;

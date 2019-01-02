@@ -5,6 +5,7 @@ const postInstance = new PostController();
 let post = new Router();
 
 post.post('/postUser', postInstance.postUser)
+  .post('/postSummary', postInstance.postSummary)
   .post('/postArticle', postInstance.postArticle)
   .post('/postComment', postInstance.postComment)
   .post('/testPost', postInstance.testPost)

@@ -1,15 +1,29 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
-
-const UserSchema = new Schema({
-  // unique：boolean，是否在此属性上定义唯一索引
-  name: { type: String, unique: true },
-  // 类型 Schema.Types.ObjectId(Id类型)、 Schema.Types.Mixed(混合或嵌套类型)
-  articles: [{ type: Schema.Types.ObjectId, ref: 'Article' }],
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }]
+const userSchema = new Schema({
+  // 作者姓名
+  username: {
+    type:String,
+    unique:true,
+    index:true
+  },
+  password:String,// 用户密码
+  authority:Array,// 权限
+  picture:String,// 头像照片
+  level:String, // 级别
+  message:String,// 说明
+  // 通知事件
+  notice:Array,
+  summarys:[{
+    type: Schema.Types.ObjectId, ref: 'Summary'
+  }],// 文章列表
+  comments:[{
+    type: Schema.Types.ObjectId, ref: 'Comment'
+  }],// 评论过别人的文章，链接文章id
+  extend:Object // 后续扩展
 });
 
-const UserModel = mongoose.model('User', UserSchema, 'userlist');
+const userModel = mongoose.model('user', userSchema,'user');
 
-export default UserModel;
+export default userModel;

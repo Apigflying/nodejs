@@ -1,13 +1,18 @@
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema;
 
-const ArticleSchema = new Schema({
-  author: { type: Schema.Types.ObjectId, ref: 'User' },
-  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
-  title: String,
-  content: String
+const articleSchema = new Schema({
+  // 评论列表
+  comments: [
+    {
+      type: Schema.Types.ObjectId, ref: 'Comment'
+    }
+  ],
+  content: String, // 文章内容
+  status: String, // 状态
+  browseTimes: Number, // 浏览次数
 });
 
-const ArticleModel = mongoose.model('Article', ArticleSchema, 'articlelist');
+const articleModel = mongoose.model('Article', articleSchema,'article');
 
-export default ArticleModel;
+export default articleModel;

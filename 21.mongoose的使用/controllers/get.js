@@ -5,9 +5,9 @@ export default class GetReq extends DOA {
   constructor() {
     super();
     this.getUser = this.getUser.bind(this);
-    this.getArticleById = this.getArticleById.bind(this);
+    this.getArticleListByUser = this.getArticleListByUser.bind(this);
+    this.getArticleDetail = this.getArticleDetail.bind(this);
     this.getArticleByTitle = this.getArticleByTitle.bind(this);
-    this.getCommentById = this.getCommentById.bind(this);
   }
   // 通过用户名获取用户信息
   async getUser (ctx) {
@@ -16,12 +16,25 @@ export default class GetReq extends DOA {
     const user = await this.findUserByName(username);
     res.body = user;
   }
-  // 通过Id获取文章
-  async getArticleById (ctx) {
+  // 通过用户名查找用户的所有文章摘要（列表）
+  async getArticleListByUser (ctx) {
+    const { request: req, response: res } = ctx;
+    // 通过id查找文章
+    const { username } = req.query;
+    const summarys = await this.findUserArticlesByName(username);
+    if (summarys) {
+      res.status = 200;
+      res.body = summarys;
+    } else {
+      res.status = 404;
+    }
+  }
+  // 通过summaryId获取文章详细信息
+  async getArticleDetail (ctx) {
     const { request: req, response: res } = ctx;
     // 通过id查找文章
     const { id } = req.query;
-    const article = await this.findArticleById(id);
+    const article = await this.findSummaryById(id);
     if (article) {
       res.status = 200;
       res.body = article;
@@ -33,17 +46,12 @@ export default class GetReq extends DOA {
   async getArticleByTitle (ctx) {
     const { request: req, response: res } = ctx;
     const { title } = req.query;
-    const article = await this.findArticlesByTitle(title);
-    if (article) {
+    const articles = await this.findArticlesByTitle(title);
+    if (articles) {
       res.status = 200;
-      res.body = article
+      res.body = articles
     } else {
       res.status = 404;
-    }
-  }
-  async getCommentById (ctx) {
-    ctx.body = {
-      list:[]
     }
   }
   async testGet (ctx) {
