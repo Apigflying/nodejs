@@ -27,6 +27,19 @@
         }
         b([4000, 3000, 2000, 4000])
     </script>
+    <div class="nac" id="a">
+    </div>
+    <script>
+        var anode= document.getElementById('a');
+        var event = new Event('listen');
+        anode.addEventListener('listen',()=>{
+            console.log(123);
+        })
+        
+        setTimeout(() => {
+            anode.dispatchEvent(event);
+        }, 2000);
+    </script>
 </body>
 
 </html>

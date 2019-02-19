@@ -21,7 +21,7 @@ router.post('/test',async (ctx,next)=>{
 app.use(router.routes());
 
 // 使用koa-static 提供静态服务
-app.use(koaStatic(path.join(__dirname, './dist')));
+app.use(koaStatic(path.join(__dirname, '../dist')));
 
 app.listen(3000,()=>{
   console.log('http://localhost:3000');

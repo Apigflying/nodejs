@@ -34,6 +34,7 @@
     "babel-register": "^6.26.0",
     "chalk": "^2.0.1",
     "config-lite": "^2.1.0",
+    "copy-template-dir": "^1.4.0",
     "ip": "^1.1.5",
     "node-require-alias": "^1.0.1"
   },
