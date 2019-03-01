@@ -1,0 +1,25 @@
+{
+  "button": [
+    {
+      "name": "关于我们",
+      "sub_button": [
+        {
+          "type": "click",
+          "name": "关于理念",
+          "url": "http://www.soso.com/",
+          "key":"a1"
+        },
+        {
+          "type": "click",
+          "name": "定制流程",
+          "key":"a2"
+        },
+        {
+          "type": "click",
+          "name": "保养需知",
+          "key":"a3"
+        }
+      ]
+    }
+  ]
+}
