@@ -3,4 +3,5 @@ node_modules
 node_modules/
 UpLoadImageToQN/
 .DS_Store
+package-lock.json
 
