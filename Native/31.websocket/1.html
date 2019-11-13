@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>1</title>
+		<script src="./js/jquery.js" type="text/javascript"></script>
+	</head>
+	<body>
+		<input type="text" id="sendTxt"  />
+		<input type="button" id="submits" value="提交" />
+		<input type="button" id="colsews" value="关闭" />
+		<script type="text/javascript">
+			const ws=new WebSocket('ws://localhost:5002')
+			const sendTxt=$('#sendTxt'),submits=$('#submits'),colsews=$('#colsews');
+			ws.onopen=e=>{
+				submits.on('click',()=>{
+					let val=sendTxt.val();
+					if(val){
+						ws.send(val);
+					}
+				})
+			};
+			ws.onclose=e=>{
+				console.log('websocket has closed')
+			};
+			ws.onmessage=e=>{
+				console.log(e.data)
+				$('body').append('<div>'+e.data+'</div>')
+			}
+			
+		</script>
+	</body>
+</html>

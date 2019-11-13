@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			button{
+				width:300px;
+				height:100px;
+				text-align: center;
+				font-size:30px;
+			}
+		</style>
+		<script src="https://cdn.bootcss.com/vConsole/3.2.2/vconsole.min.js"></script>
+		<script>
+				var vConsole = new VConsole();
+				console.log('hello world')
+		</script>
+	</head>
+
+	<body>
+		<button id="start">点击开启震动</button>
+		<hr />
+		<button id="end">点击停止震动</button>
+		<script type="text/javascript">
+			var start = document.getElementById('start');
+			var end = document.getElementById('end');
+			var vibrateInterval;
+			
+			/*
+				注：此方法只能通过用户的行为触发；
+				主动触发会报警告；
+			*/
+			start.onclick = function(){
+				startVibrate(10000);
+			}
+			end.onclick = function(){
+				stopVibrate();
+			}
+			// 开始震动
+			function startVibrate(duration) {
+				window.navigator.vibrate(duration);
+			}
+
+			// 停止震动
+			function stopVibrate() {
+				// 清除间隔和停止持续振动
+				if(vibrateInterval) clearInterval(vibrateInterval);
+				window.navigator.vibrate(0);
+			}
+		</script>
+	</body>
+
+</html>

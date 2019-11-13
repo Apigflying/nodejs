@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="GB2312">
+    <meta name="viewport"
+        content="width=320,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="Copyright" content="Copyright (c) 2006-2016 TENCENT" />
+    <title>mmd_videoPlayer_two</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            /*text-align: center;*/
+            /*background-color: #cccccc;*/
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        /*
+        以下样式设置的目的:
+        video在IOS9(包括9)以上系统版本,微信/手Q里面能自动播放,
+        除满足上述条件以外的IOS系统播放video,
+        需要借助以下样式设置来屏蔽默认video控件,
+        并通过videoPlayer.currentTime来实现播放效果;
+        */
+        .IIV::-webkit-media-controls-play-button,
+        .IIV::-webkit-media-controls-start-playback-button {
+            opacity: 0;
+            pointer-events: none;
+            width: 5px;
+        }
+
+
+        button.buttonStyle0 {
+            position: absolute;
+            right: 2%;
+            width: 200px;
+            height: 30px;
+            background-color: #ffffff
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--<script src="http://cdn.jsdelivr.net/eruda/1.0.4/eruda.min.js"></script>
+<script>eruda.init();</script>-->
+
+    <script src="//ossweb-img.qq.com/images/js/mmdVideoPlayer/mmd.videoplayer.min.1.0.0.js"></script>
+    <!--<script src="src/iphone-inline-video.min.js"></script>-->
+    <!--<script src="src/videoPlayer.js"></script>-->
+
+    <script src="//ossweb-img.qq.com/images/spiderMediaData/tlbb_new/mediaURLData.js"></script>
+
+    <!--
+参数简易说明:
+1.view-mode = "v" "v"竖屏,"h"横屏;
+2.view-rotation="auto" 默认"auto" 自动旋转,"v"竖屏可视,"h"横屏可视;
+3.view-scale="exactfit" 缩放模式 默认"exactfit";
+                    "exactfit":高宽等于屏幕高宽;
+                    "noborder":裁剪铺满;
+                    "noscale":不缩放;
+                    "showall":显示全部;
+                    "width":宽度等于屏幕宽;
+                    "height":高度等于屏幕高;
+4.view-align="",默认为"" 居中;
+                    "t":靠顶;
+                    "l":靠左;
+                    "r":靠右;
+                    "b":靠底;
+                    可以结合一起用，比如"tl","tr","bl","br";
+5.view-width="400" 目标宽 默认"400";
+6.view-height="400" 目标高 默认"400";
+-->
+
+    <!--<div view-mode="v" view-rotation="auto" view-scale="noborder" view-width="800" view-height="1024" view-align="">-->
+    <div>
+        <div style="position: absolute;">
+            <video id="video" style="display:none;width: 50%"></video>
+            <video id="video1" style="display:none;width: 50%"></video>
+        </div>
+        <button id="btn_play" class="buttonStyle0" style="display:block;top:10px;"
+            onclick="videoPlayer.play();//videoPlayer2.pause();">video0 play()</button>
+        <button id="btn_pause" class="buttonStyle0" style="display:block;top:50px;"
+            onclick="videoPlayer.pause();//videoPlayer2.play();">video0 pause()</button>
+        <button id="btn_muted_false" class="buttonStyle0" style="display:block;top:90px;"
+            onclick="videoPlayer.muted=false;">video0.muted=false[ISO10&Android]</button>
+        <button id="btn_muted_true" class="buttonStyle0" style="display:block;top:130px;"
+            onclick="videoPlayer.muted=true;//videoPlayer2.play();">video0.muted=true[ISO10&Android]</button>
+
+
+        <button id="btn_play2" class="buttonStyle0" style="display:block;top:370px;"
+            onclick="videoPlayer2.play();//videoPlayer.pause();">video1 play()</button>
+        <button id="btn_pause2" class="buttonStyle0" style="display:block;top:410px;"
+            onclick="videoPlayer2.pause();//videoPlayer.play();">video1 pause()</button>
+        <button id="btn_muted2_false" class="buttonStyle0" style="display:block;top:450px;"
+            onclick="videoPlayer2.muted=false;">video1.muted=false[ISO10&Android]</button>
+        <button id="btn_muted2_true" class="buttonStyle0" style="display:block;top:490px;"
+            onclick="videoPlayer2.muted=true;//videoPlayer2.play();">video1.muted=true[ISO10&Android]</button>
+
+    </div>
+    <script>
+        var src0 = '//pvp.qq.com/act/a20161026nw/movies/movie.mp4';
+        var src1 = '//game.gtimg.cn/images/game/act/a20160917fbh/videos/video2.mp4';
+        var videoPlayer = new MMD.VideoPlayer(
+            {
+                videoElement: document.getElementById('video'),//[必填],video元素;
+                src: src0,//[必填],video src;
+                loop: true,//[可选],是否循环,默认false,true为循环;
+                muted: false,//[可选],是否静音,默认false;
+                poster: '',//[可选],video默认图片;
+                timesParam: [
+                    { name: 'firstPoint', time: 5 },
+                    { name: 'secondPoint', time: 8 },
+                ],//[可选],video currenttime时间点;
+                onTimes: function (name) {
+                    console.log(name)
+                    switch (name) {
+                        case 'firstPoint':
+
+                            break;
+                        case 'secondPoint':
+
+                            break;
+                    }
+                },//[可选],video currenttime回调;
+                onStart: function () { console.log('video start') },//[可选],video第一个画面出现回调;
+                onEnd: function () { console.log('video end') }//[可选],video播放完成回调;
+            }
+        );
+
+
+        /*
+         * 用来判断video是否支持自动播放;
+         * true:直接调用play方法播放video;
+         * false:需要通过按钮点击来触发play方法;
+         * */
+        //videoPlayer.isVideoCanAutoPlay;
+        /*l
+         * video播放方法,里面做兼容处理,在IOS9(包括9)以上的系统,微信/手Q能自动播放;
+         * */
+        //videoPlayer.play();
+        console.log('videoPlayer.isVideoCanAutoPlay:', videoPlayer.isVideoCanAutoPlay);
+        //    if(videoPlayer.isVideoCanAutoPlay)
+        if (videoPlayer.isVideoCanAutoPlay) {
+            //        videoPlayer.play();
+        }
+
+        var videoPlayer2 = new MMD.VideoPlayer(
+            {
+                videoElement: document.getElementById('video1'),//[必填],video元素;
+                src: src1,//[必填],video src;
+                loop: true,//[可选],是否循环,默认false,true为循环;
+                muted: false,//[可选],是否静音,默认false;
+                poster: '',//[可选],video默认图片;
+                timesParam: [
+                    //                {name:'firstPoint',time:5},
+                    //                {name:'secondPoint',time:8},
+                ],//[可选],video currenttime时间点;
+                onTimes: function (name) {
+                    console.log(name)
+                    switch (name) {
+                        case 'firstPoint':
+                            //                        videoPlayer.currentTime(3);
+                            break;
+                        case 'secondPoint':
+
+                            break;
+                    }
+                },//[可选],video currenttime回调;
+                onStart: function () { console.log('video start') },//[可选],video第一个画面出现回调;
+                onEnd: function () { console.log('video end') }//[可选],video播放完成回调;
+            }
+        );
+
+    </script>
+
+</body>
+
+</html>

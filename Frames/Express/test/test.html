@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<div style="border:1px solid #eee">
+    <div style="display: none;">
+        <video id="video" src="./lib/shiping.mp4" x-webkit-airplay="allow" webkit-playsinline playsinline
+            x5-video-player-type="h5" x5-video-player-fullscreen></video>
+    </div>
+    <canvas id="canvas-1" width="500" height="300">
+    </canvas>
+    <br />
+    &nbsp;&nbsp;&nbsp;<input type="button" value="播放" id="play" />
+    <input type="button" value="暂停" id="stop" />
+    <br /><br />
+</div>
+<script>
+    var timer = null;
+    var video = document.getElementById("video");
+    var canvas = document.getElementById("canvas-1");
+    var ctx = canvas.getContext("2d");
+
+    function play() {
+        video.play();
+        timer = setInterval(function () {
+            if (video.currentTime >= video.duration) {
+                stop();
+            };
+            ctx.drawImage(video, (canvas.width - video.videoWidth) / 2, (canvas.height - video.videoHeight) / 2, video.videoWidth, video.videoHeight);//绘制视频
+        }, 16);
+    }
+
+    function stop() {
+        clearInterval(timer);
+        video.pause();
+    }
+
+    document.getElementById("play").onclick = function () { play(); }
+    document.getElementById("stop").onclick = function () { stop(); }
+
+
+    const fn = () => {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200 || xhr.status === 304) {
+                    var json = JSON.parse(xhr.responseText);
+                    console.log(json)
+                }
+            } else {
+                console.log('error')
+            }
+        };
+        xhr.open('GET', `https://wmp-dev.thinkchina.com/api/beautywish/product/list?bwuserid=${''}&limit=${2}&category=&appid=${'5da6b9de5bad567e6f6cb65a'}`, false);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        // xhr.send();
+        xhr.send();
+    };
+    fn();
+</script>
